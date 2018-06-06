@@ -11,8 +11,8 @@ import logo from './matadorf.png';
 const App = () => (
     <Router>
         <Wrapper>
-            <StyledLink to="/">
-                <Logo>
+            <Logo>
+                <StyledLink to="/">
                     <div>
                         <img src={logo} alt="logo"/>
                     </div>
@@ -26,8 +26,8 @@ const App = () => (
                             url shortener
                         </h2>
                     </div>
-                </Logo>
-            </StyledLink>
+                </StyledLink>
+            </Logo>
             <Nav>
                 <ButtonLink to="/explore">
                     <i className="fa fa-coffee"/>Explore
@@ -41,10 +41,10 @@ const App = () => (
 );
 
 const Wrapper = styled.section`
-    padding: 4em;
     color: #CFC3C3;
     background-color: #3F4545;
     height: calc(100vh);
+    max-height: calc(100vh);
     
     i {
         margin: auto 5px;
@@ -81,6 +81,7 @@ const Logo = styled.section`
     display: grid;
     width: 240px;
     text-align: center;
+    
     
     h1 {
         margin: 0px;

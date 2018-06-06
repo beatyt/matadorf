@@ -74,12 +74,10 @@ class formSubmit extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <Wrapper>
-                        <Banner>
-                            Generate a memorable url for long text items
-                        </Banner>
-                    </Wrapper>
-                    <Wrapper>
+                    <Banner>
+                        Generate a memorable url for long text items
+                    </Banner>
+                    <Banner>
                         {
                             (this.state.url !== undefined
                                 && this.state.url !== '') ?
@@ -87,16 +85,16 @@ class formSubmit extends Component {
                                            size={window.location.href.length}/>
                                 : null
                         }
-                    </Wrapper>
+                    </Banner>
                     <Wrapper>
-                    <TextArea readOnly={this.state.url !== '' && this.state.url !== undefined} value={this.state.text}
-                              onChange={this.handleChange}
-                              placeholder={(this.state.url !== '' && this.state.url !== undefined)
-                                  ? "This has been submitted and can no longer be edited"
-                                  : "Ctrl + C, V or drag text here"}/>
-                        <div>
-                            <Button disabled={this.state.url !== '' && this.state.url !== undefined}>Upload</Button>
-                        </div>
+                        <TextArea
+                            readOnly={this.state.url !== '' && this.state.url !== undefined}
+                            value={this.state.text}
+                            onChange={this.handleChange}
+                            placeholder={(this.state.url !== '' && this.state.url !== undefined)
+                                ? "This has been submitted and can no longer be edited"
+                                : "Ctrl + C, V or drag text here"}/>
+                        <Button disabled={this.state.url !== '' && this.state.url !== undefined}>Submit</Button>
                     </Wrapper>
                 </form>
                 {
@@ -117,14 +115,13 @@ const Wrapper = styled.section`
     display: flex;
     justify-content: center;
     margin: auto;
-    width: calc(50vw);
-
+    width: calc(100vw);
 `;
 
 const Banner = styled.section`
     text-align: center;
     min-height: 34px;
-    margin-top: 12px;
+    margin: 12px;
     letter-spacing: .6px;
     font-size: 24px;
 `;
@@ -134,11 +131,9 @@ const TextArea = styled.textarea`
     background-color: #222727;
     color: #CFC3C3;
     border: 0px;
-    margin: auto;
-    width: 100%;
-    float: right;
-    resize: none;
-    height: calc(80vh - 20px);
+    height: calc(60vh);
+    min-width: calc(60vw);
+    max-height: calc(70vh);
 `;
 
 const Button = styled.button`
@@ -148,8 +143,8 @@ const Button = styled.button`
         padding: 5px 20px;
         line-height: 20px;
         border: 1px solid #555959;
-        float: right;
         margin-left: 10px;
+        max-height: 40px;
         
         &:hover {
             background: #555A5A;
@@ -172,7 +167,6 @@ const TextInput = styled.input`
         padding: 5px 20px;
         line-height: 20px;
         border: 1px solid #555959;
-        margin: 10px;
     `;
 
 const Header = styled.section`

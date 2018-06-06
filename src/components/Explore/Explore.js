@@ -77,8 +77,8 @@ class Explore extends Component {
 const TagContainer = styled.section`
     margin-top: 20px;
     display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 64px;
+    grid-template-columns: repeat(4, 1fr);
     justify-content: start;
 `;
 
@@ -86,6 +86,9 @@ const Tag = styled.section`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: auto;
 `;
 
 const TagHeader = styled.section`
