@@ -22,7 +22,11 @@ class formSubmit extends Component {
 
     // Calls the back-end to get the page for this id
     handleLoad() {
-        console.log(this.state.url);
+
+        if (this.props.match.params.pageid === '') {
+            return;
+        }
+
         const url = this.props.match.params.pageid;
         fetch(`http://localhost:3002/pages/${url}`, {
             method: 'GET'
@@ -55,7 +59,8 @@ class formSubmit extends Component {
         }).then((response) => {
 
             response.json().then((body) => {
-                window.location = '/pages/' + Object.keys(body);
+                console.table(body);
+                window.location = '/pages/' + body.url;
             });
         }).catch((err) => {
             console.log("Service returned an error: " + err)
@@ -72,7 +77,7 @@ class formSubmit extends Component {
 
     render() {
         return (
-            <div>
+            <Container>
                 <form onSubmit={this.handleSubmit}>
                     <Banner>
                         Generate a memorable url for long text items
@@ -106,10 +111,13 @@ class formSubmit extends Component {
                         </Header>
                         : null
                 }
-            </div>
+            </Container>
         );
     }
 }
+
+const Container = styled.div`
+`;
 
 const Wrapper = styled.section`
     display: flex;

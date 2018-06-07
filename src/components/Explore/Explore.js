@@ -8,8 +8,9 @@ class Explore extends Component {
         super(props);
 
         this.state = {
-            data: []
+            data: {}
         };
+
         this.handleLoad = this.handleLoad.bind(this);
     };
 
@@ -35,30 +36,26 @@ class Explore extends Component {
 
     render() {
         function List(props) {
-            const list = props.list;
+            if (props.list.pages === undefined) {
+                return null;
+            }
+            const list = props.list.pages;
             // Not recommended to use index as the key.
             // Better would have each element having an id
             if (list === null
             || list.length < 1) {
                 return <div>The API did not return any items. It is possible that no items exist or the service is down.</div>
             }
-            const items = list.map((item, index) => {
-                    let stacktrace;
-                    for (const i in item) {
-                        // because i used the key for the map in Go
-                        // we have to do this silliness
-                        // lessons were learned
-                        stacktrace = item[i].stacktrace;
-                    }
-                    stacktrace = stacktrace.substring(0, 250);
+
+            const items = Object.keys(list).map((item) => {
                     return (
                         <Tag>
-                            <StyledLink to={"/pages/" + Object.keys(item)}>
+                            <StyledLink to={"/pages/" + item}>
                                 <TagHeader>
-                                    {Object.keys(item)}
+                                    {item}
                                 </TagHeader>
                                 <TagBody>
-                                    {stacktrace}
+                                    {list[item].stacktrace}
                                 </TagBody>
                             </StyledLink>
                         </Tag>

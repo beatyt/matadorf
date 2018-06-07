@@ -6,9 +6,14 @@ import (
 	"time"
 )
 
+type Pages struct {
+	Pages map[string]StacktracePage `json:"pages"`
+}
+
 type StacktracePage struct {
 	Timestamp time.Time `json:"timestamp,omitempty"`
-	Text      string    `json:"stacktrace"`
+	Text      string    `json:"stacktrace,omitempty"`
+	Url       string    `json:"url,omnitempty"`
 }
 
 type Dictionary struct {
