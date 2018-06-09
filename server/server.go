@@ -74,6 +74,10 @@ func submit(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		panic(err)
 	}
 
+	if pages.Pages == nil {
+		pages.Pages = make(map[string]StacktracePage)
+	}
+
 	url := dict.generateUrl()
 	pages.Pages[url] = StacktracePage{time.Now(), string(body), url}
 
