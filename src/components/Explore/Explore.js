@@ -20,7 +20,7 @@ class Explore extends Component {
     }
 
     handleLoad() {
-        fetch('http://localhost:3002/explore', {
+        fetch(`${process.env.REACT_APP_API_HOST}/explore`, {
             method: 'GET'
         }).then((response) => {
 

@@ -28,7 +28,7 @@ class formSubmit extends Component {
         }
 
         const url = this.props.match.params.pageid;
-        fetch(`http://localhost:3002/pages/${url}`, {
+        fetch(`${process.env.REACT_APP_API_HOST}/pages/${url}`, {
             method: 'GET'
         }).then((response) => {
 
@@ -50,7 +50,7 @@ class formSubmit extends Component {
             return;
         }
 
-        fetch('http://localhost:3002/submit', {
+        fetch(`${process.env.REACT_APP_API_HOST}/submit`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
